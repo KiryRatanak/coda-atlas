@@ -1,4 +1,4 @@
 build: 
     cd build && cmake .. && cmake --build . 
 run: 
-    cd build && ./ExcelTableApp
+    cd build && ./tech-brary
