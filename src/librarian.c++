@@ -1,20 +1,18 @@
 #include <iostream>
 #include <algorithm>
+
 #include "librarian.h++"
 
 using namespace std;
 
-// Constructor to initialize the librarian (no parameters needed)
-Librarian::Librarian() {}
+Librarian::Librarian() {};
 
-// Import Book
 void Librarian::importBook(const string& title, const string& author, int year) {
     Book newBook = {nextId++, title, author, year};  // Create a new book with an auto-incremented ID
     books.push_back(newBook);
     cout << "Book imported successfully!\n";
 }
 
-// List all Books
 void Librarian::listBooks() {
     cout << "\n===== Book List =====\n";
     if (books.empty()) {
@@ -36,7 +34,6 @@ void Librarian::listBooks() {
 //     cout << "Book inserted!\n";
 // }
 
-// Search for books by title, author, or year
 void Librarian::searchBooks(const string& title, const string& author, int year) {
     cout << "\n===== Search Result =====\n";
     bool found = false;
@@ -55,7 +52,6 @@ void Librarian::searchBooks(const string& title, const string& author, int year)
     }
 }
 
-// Update book details
 void Librarian::updateBook(int id) {
     for (auto& b : books) {
         if (b.id == id) {
@@ -72,7 +68,6 @@ void Librarian::updateBook(int id) {
     cout << "Book with ID " << id << " not found.\n";
 }
 
-// Delete a book by ID
 void Librarian::deleteBook(int id) {
     auto it = remove_if(books.begin(), books.end(), [&](const Book& b) {
         return b.id == id;
@@ -86,24 +81,7 @@ void Librarian::deleteBook(int id) {
     }
 }
 
-// Get the total number of books
 int Librarian::amount() {
-    return books.size();
+    return static_cast<int>(books.size());
 }
 
-// Menu Functions
-void displayMenu() {
-    cout << "\n===== Library Menu =====\n";
-    cout << "  1. Import Book\n";
-    cout << "  2. List Books\n";
-    // cout << "  3. Insert Book\n";
-    cout << "  3. Search Book\n";
-    cout << "  4. Update Book\n";
-    cout << "  5. Delete Book\n";
-    cout << "  6. Amount\n";
-    cout << "  0. Exit\n";
-}
-
-void showWelcomeMessage() {
-    cout << "------| Welcome to Library System |------" << endl;
-}

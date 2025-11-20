@@ -1,9 +1,10 @@
-#include "User.h++"
 #include <iostream>
+
+#include "User.h++"
+#include "Menu.h++"
 
 using namespace std;
 
-    // Library book list
 vector<Book> libraryBooks = {
     {1, "Math", "Minh", 2013, false},
     {2, "English", "Ratana", 2008, false},
@@ -21,14 +22,7 @@ User::User(vector<Book>* libraryBooks) {
 void User::userMenu() {
     int choice;
     do {
-        cout << "\n=====[ USER MENU ]=====\n";
-        cout << "1. List all books\n";
-        cout << "2. Find a book\n";
-        cout << "3. Borrow a book\n";
-        cout << "4. View borrow history\n";
-        cout << "5. Delete a book\n";
-        cout << "0. Exit\n";
-        cout << "Choose: ";
+        userMenu();
         cin >> choice;
 
         switch (choice) {
@@ -135,11 +129,9 @@ void User::deleteBook() {
     cout << "Enter book ID to delete from your borrowed list: ";
     cin >> id;
 
-    // search in borrow history
     for (int i = 0; i < borrowHistory.size(); i++) {
         if (borrowHistory[i].bookId == id) {
 
-            // mark library book as available again
             for (auto& b : *books) {
                 if (b.id == id) {
                     b.isBorrowed = false;
@@ -147,7 +139,6 @@ void User::deleteBook() {
                 }
             }
 
-            // remove from history ONLY
             borrowHistory.erase(borrowHistory.begin() + i);
 
             cout << "Book removed from your borrow list.\n";

@@ -5,18 +5,6 @@
 
 using namespace std;
  
-void LogWarning (){
-    cout << red << "[WARNING]" << reset << endl;
-    
-}
-
-void LogSuccess(){ 
-    cout<< green << "[SUCCESS]" << reset <<endl;
-    
-}
-void LogError(){
-    cout<< red << "[ERROR]" << reset <<endl;
-}
 void msgWarning(){
     cout  << red << " [WARNING] "<< reset << endl;
 }

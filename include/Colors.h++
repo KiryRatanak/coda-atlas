@@ -11,15 +11,15 @@
 #define cyan    "\033[36m"
 #define white   "\033[37m"
 
-// bright color
-#define b_black   "\033[90m"
-#define b_red     "\033[91m"
-#define b_green   "\033[92m"
-#define b_yellow  "\033[93m"
-#define b_blue    "\033[94m"
-#define b_purple  "\033[95m"
-#define b_cyan    "\033[96m"
-#define b_white   "\033[97m"
+// bold color
+#define b_black   "\033[1;30m"
+#define b_red     "\033[1;31m"
+#define b_green   "\033[1;32m"
+#define b_yellow  "\033[1;33m"
+#define b_blue    "\033[1;34m"
+#define b_purple  "\033[1;35m"
+#define b_cyan    "\033[1;36m"
+#define b_white   "\033[1;37m"
 
 
 // background color
