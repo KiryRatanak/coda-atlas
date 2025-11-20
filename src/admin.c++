@@ -1,43 +1,37 @@
 #include <iostream>
 #include <string>
-#include"Admin.h++"
+
+#include "Admin.h++"
+#include "Menu.h++"
+
 using namespace std;
 
-// Function to check admin credentials
 bool checkAdmin(const string& username, const string& password) {
     const string adminUsername = "admin";
-    const string adminPassword = "admin123"; // You can change this
+    const string adminPassword = "admin123";
 
     return (username == adminUsername && password == adminPassword);
 }
 
-// Placeholder functions
 void checkLibrary() {
-    // You will add code here later
     cout<<"Function runs successfully!"<<endl;
 }
 
 void manageLibrarian() {
-    // You will add code here later
     cout<<"Function runs successfully!"<<endl;
 }
 
 void amount() {
-    // You will add code here later
     cout<<"Function runs successfully!"<<endl;
 }
 
-// Function to display admin menu
 void adminMenu() {
     int choice;
 
     do {
-        cout << "\n===== ADMIN MENU =====\n";
-        cout << "1. Check Library\n";
-        cout << "2. Manage Librarian\n";
-        cout << "3. Amount\n";
-        cout << "0. Exit\n";
-        cout << "Enter your choice: ";
+
+        displayAdminMenu();
+        
         cin >> choice;
 
         switch (choice) {
@@ -60,8 +54,7 @@ void adminMenu() {
     } while (choice != 0);
 }
 
-// Function to handle login process
-void login() {
+void loginAs() {
     string username, password;
     int attempts = 3;
 
@@ -73,7 +66,7 @@ void login() {
 
         if (checkAdmin(username, password)) {
             cout << "Login successful. Welcome, Admin!" << endl;
-            adminMenu();  // Show menu after successful login
+            adminMenu();
             return;
         } else {
             attempts--;
@@ -82,13 +75,4 @@ void login() {
     }
 
     cout << "Too many failed attempts. Access denied." << endl;
-}
-
-// Main function
-int main() {
-    system("cls");
-
-    login();
-    
-    return 0;
 }

@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 
-// Book struct to represent a book's information
 struct Book {
     int id;
     std::string title;
@@ -13,10 +12,10 @@ struct Book {
 class Librarian {
 private:
     std::vector<Book> books;
-    int nextId = 1; // Used for auto-incrementing the book ID
+    int nextId = 1;
 
 public:
-    Librarian();  // Constructor to initialize the librarian (doesn't need any input)
+    Librarian();
     
     void importBook(const std::string& title, const std::string& author, int year);
     void listBooks();
@@ -27,6 +26,5 @@ public:
     int amount();
 };
 
-// Menu and Welcome message function declarations
 void displayMenu();
 void showWelcomeMessage();

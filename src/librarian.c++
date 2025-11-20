@@ -8,7 +8,7 @@ using namespace std;
 Librarian::Librarian() {};
 
 void Librarian::importBook(const string& title, const string& author, int year) {
-    Book newBook = {nextId++, title, author, year};  // Create a new book with an auto-incremented ID
+    Book newBook = {nextId++, title, author, year};
     books.push_back(newBook);
     cout << "Book imported successfully!\n";
 }

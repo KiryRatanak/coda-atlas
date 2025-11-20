@@ -18,8 +18,8 @@ struct History {
 
 class User {
 private:
-    std::vector<Book>* books;             // pointer to all books in library
-    std::vector<History> borrowHistory;   // user's own history
+    std::vector<Book>* books;
+    std::vector<History> borrowHistory;
 
 public:
     User(std::vector<Book>* libraryBooks);

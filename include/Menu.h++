@@ -28,3 +28,13 @@ void displayUserMenu()
     cout << "0. Exit\n";
     cout << "Choose: ";
 }
+
+void displayAdminMenu()
+{
+    cout << "\n===== ADMIN MENU =====\n";
+    cout << "1. Check Library\n";
+    cout << "2. Manage Librarian\n";
+    cout << "3. Amount\n";
+    cout << "0. Exit\n";
+    cout << "Enter your choice: ";
+}

@@ -7,4 +7,4 @@ void checkLibrary();
 void manageLibrarian();
 void amount();
 void adminMenu();
-void login();
+void loginAs();
