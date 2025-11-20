@@ -22,7 +22,7 @@ User::User(vector<Book>* libraryBooks) {
 void User::userMenu() {
     int choice;
     do {
-        userMenu();
+        displayUserMenu();
         cin >> choice;
 
         switch (choice) {
