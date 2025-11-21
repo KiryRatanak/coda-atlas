@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include "Admin.h++"
-#include "Menu.h++"
+#include "Admin.hpp"
+#include "Menu.hpp"
 
 using namespace std;
 

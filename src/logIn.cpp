@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "LogIn.h++"
+#include "LogIn.hpp"
 
 using namespace std;
 
