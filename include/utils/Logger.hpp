@@ -1,17 +1,14 @@
 #pragma once
 #include<iostream>
 
-#include "Colors.hpp"
+#include "ui/Colors.hpp"
 
 using namespace std;
- 
-void msgWarning(){
-    cout  << red << " [WARNING] "<< reset << endl;
-}
-void msgSuccess(){ 
-    cout << green << " [SUCCESS] " << reset << endl;
-}  
-void msgError(){ 
-    cout << red << " [ERROR] " << reset << endl;
-}
 
+void msgExitProgram();
+void msgTryAgain();
+void msgSuccess();
+void msgUnsuccess();
+void msgPressEnter();
+void msgWrongPutHeader();
+void msgWithoutNumber();
