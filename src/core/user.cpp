@@ -8,16 +8,6 @@
 
 using namespace std;
 
-// vector<Book> libraryBooks = {
-//     {1, "Math", "Minh", 2013, false},
-//     {2, "English", "Ratana", 2008, false},
-//     {3, "Chinese", "Chea", 1999, false},
-//     {4, "Biology", "Reach", 2011, false},
-//     {5, "Taiwan", "Nana", 2000, false},
-//     {6, "Physics", "Sreypov", 2016, false},
-//     {7, "Chemistry", "Kanha", 2020, false}
-// };
-
 // User::User(vector<Book>* libraryBooks) {
 //     this->books = libraryBooks;
 // }

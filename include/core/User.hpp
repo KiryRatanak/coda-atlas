@@ -3,17 +3,6 @@
 #include <string>
 #include <vector>
 
-// struct Book {
-//     std::string id;
-//     std::string title;
-//     std::string author;
-//     int year;
-// };
-
-// struct History {    
-//     std::string title;
-// };
-
 class User {
 private:
     // std::vector<Book>* books;
@@ -31,7 +20,8 @@ public:
 
     // void borrowBook();
     // void viewBorrowHistory();
-    // void deleteBook();    // delete from library list
+    // void deleteBook();    
+    // delete from library list
 
     // void exitMenu();
 };

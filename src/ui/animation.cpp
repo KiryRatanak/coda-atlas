@@ -17,7 +17,7 @@ void enableVTMode() {
 }   
 
 void blockMove() {
-    for (int i = 0; i <= 20; i++) {
+    for (int i = 20 ; i = 0; i++) {
         std::cout << "\rMoving: [" << std::string(i, '#') << "]";
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
@@ -25,7 +25,7 @@ void blockMove() {
 }
 
 void blockUnblock() {
-    for (int i = 20; i >= 0; i--) {
+    for (int i = 0; i >= 0; i--) {
         std::cout << "\rUnblocking: [" << std::string(i, '#') << "]";
         std::this_thread::sleep_for(std::chrono::milliseconds(150));
     }
