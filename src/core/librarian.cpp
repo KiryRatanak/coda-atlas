@@ -5,107 +5,106 @@
 #include "validation/Validation.hpp"
 #include "utils/Logger.hpp"
 #include "core/Librarian.hpp"
+#include "book/Book.hpp"
 
 using namespace std;
 
 Librarian::Librarian() {};
 
-// void Librarian::importBook(const string &title, const string &author, int year)
-// {
-//     Book newBook = {nextId++, title, author, year};
-//     books.push_back(newBook);
-//     cout << "Book imported successfully!\n";
-// }
-
-// void Librarian::listBooks()
-// {
-//     cout << "\n===== Book List =====\n";
-//     if (books.empty())
-//     {
-//         cout << "No books available.\n";
-//         return;
-//     }
-
-//     for (const auto &b : books)
-//     {
-//         cout << "ID: " << b.id << " | " << b.title
-//              << " | " << b.author
-//              << " | " << b.year << endl;
-//     }
-// }
-
-// // Insert a new book
-// // void Librarian::insertBook(const string& title, const string& author, int year) {
-// //     Book newBook = {nextId++, title, author, year};  // Automatically generate an ID
-// //     books.push_back(newBook);
-// //     cout << "Book inserted!\n";
-// // }
-
-// void Librarian::searchBooks(const string &title, const string &author, int year)
-// {
-//     cout << "\n===== Search Result =====\n";
-//     bool found = false;
-
-//     for (const auto &b : books)
-//     {
-//         if (b.title == title || b.author == author || b.year == year)
-//         {
-//             cout << "ID: " << b.id << " | " << b.title
-//                  << " | " << b.author
-//                  << " | " << b.year << endl;
-//             found = true;
-//         }
-//     }
-
-//     if (!found)
-//     {
-//         cout << "No matching book found.\n";
-//     }
-// }
-
-// void Librarian::updateBook(int id)
-// {
-//     for (auto &b : books)
-//     {
-//         if (b.id == id)
-//         {
-//             cout << "Enter new title: ";
-//             cin >> b.title;
-//             cout << "Enter new author: ";
-//             cin >> b.author;
-//             cout << "Enter new year: ";
-//             cin >> b.year;
-//             cout << "Book updated successfully!\n";
-//             return;
-//         }
-//     }
-//     cout << "Book with ID " << id << " not found.\n";
-// }
-
-// void Librarian::deleteBook(int id)
-// {
-//     auto it = remove_if(books.begin(), books.end(), [&](const Book &b)
-//                         { return b.id == id; });
-
-//     if (it != books.end())
-//     {
-//         books.erase(it, books.end());
-//         cout << "Book deleted successfully!\n";
-//     }
-//     else
-//     {
-//         cout << "Book with ID " << id << " not found.\n";
-//     }
-// }
-
-// int Librarian::amount()
-// {
-//     return static_cast<int>(books.size());
-// }
-
-void Librarian::librarianMenu()
+void Librarian::importBook(string title, string author, int year, string country)
 {
-    // int option;
+    Book newBook = {title, author, year, country};
+    books.push_back(newBook);
+    cout << "Book imported successfully!\n";
+}
+
+void Librarian::listBooks()
+{
+    system("cls");
+    cout << "\n===== Book List =====\n";
+    if (books.empty())
+    {
+        cout << "No books available.\n";
+        return;
+    }
+
+    for (auto &b : books)
+    {
+        cout << b.title
+             << " | " << b.author
+             << " | " << b.year
+             << " | " << b.country << endl;
+    }
+}
+
+void Librarian::searchBooks(string title, string author, int year, string country)
+{
+    cout << "\n===== Search Result =====\n";
+    bool found = false;
+
+    for (auto &b : books)
+    {
+        if (b.title == title || b.author == author || b.year == year)
+        {
+            cout << b.title
+                 << " | " << b.author
+                 << " | " << b.year
+                 << " | " << b.country << endl;
+            found = true;
+        }
+    }
+
+    if (!found)
+    {
+        cout << "No matching book found.\n";
+    }
+}
+
+void Librarian::updateBook(string title)
+{
+    for (auto &b : books)
+    {
+        if (b.title == title)
+        {
+            cout << "Enter new title: ";
+            cin >> b.title;
+            cout << "Enter new author: ";
+            cin >> b.author;
+            cout << "Enter new year: ";
+            cin >> b.year;
+            cout << "Enter new country: ";
+            cin >> b.country;
+            cout << "Book updated successfully!\n";
+            return;
+        }
+    }
+    cout << "Book with title " << title << " not found.\n";
+}
+
+void Librarian::deleteBook(string title)
+{
+    auto it = remove_if(books.begin(), books.end(), [&](const Book &b)
+                        { return b.title == title; });
+
+    if (it != books.end())
+    {
+        books.erase(it, books.end());
+        cout << "Book deleted successfully!\n";
+    }
+    else
+    {
+        cout << "Book with title " << title << " not found.\n";
+    }
+}
+
+int Librarian::amount()
+{
+    return static_cast<int>(books.size());
+}
+
+int Librarian::librarianMenu()
+{
+    int option;
     string username, password;
     int attempts = 3;
 
@@ -123,43 +122,94 @@ void Librarian::librarianMenu()
 
         if (checkLibrarian(username, password))
         {
-            cout << endl << endl << endl ;
-            msgSuccessInLogIn();
-            msgPressEnterInLogIn();
-            cout << endl ;
-            msgReturnBackInLogIn();
-            // do
-            // {
-            //     displayLibrarianMenu();
+            Librarian lib;
+            do
+            {
+                displayLibrarianMenu();
 
-            //     cin >> option;
+                option = validatedManageLibrarian();
 
-            //     option = validatedAdminLogIn();
+                if (option == 7)
+                {
+                    msgReturnBackInLogIn();
+                    return -1;
+                }
 
-            //     switch (option)
-            //     {
-            //     case 1:
-            //         break;
+                switch (option)
+                {
+                case 1:
+                {
+                    listBooks();
+                    break;
+                }
 
-            //     case 2:
-            //         break;
+                case 2:
+                {
+                    system("cls");
+                    string title, author, country;
+                    int year;
+                    cout << "Enter book title: ";
+                    cin >> title;
+                    cout << "Enter book author: ";
+                    cin >> author;
+                    cout << "Enter publication year: ";
+                    cin >> year;
+                    cout << "Enter country: ";
+                    cin >> country;
+                    lib.importBook(title, author, year, country);
+                    break;
+                }
 
-            //     case 3:
-            //         break;
-            //     case 4:
-            //         break;
+                case 3:
+                {
+                    system("cls");
+                    string title, author, country;
+                    int year;
+                    cout << "Enter book title: ";
+                    cin >> title;
+                    cout << "Enter book author: ";
+                    cin >> author;
+                    cout << "Enter publication year: ";
+                    cin >> year;
+                    cout << "Enter country: ";
+                    cin >> country;
+                    lib.searchBooks(title, author, year, country);
+                    break;
+                }
+                case 4:
+                {
+                    system("cls");
+                    string title;
+                    listBooks();
+                    cout << "Enter book title to update: ";
+                    cin >> title;
+                    lib.updateBook(title);
+                    break;
+                }
 
-            //     case 5:
-            //         break;
+                case 5:
+                {
+                    system("cls");
+                    string title;
+                    listBooks();
+                    cout << "Enter book title to delete: ";
+                    cin >> title;
+                    lib.deleteBook(title);
+                    break;
+                }
 
-            //     case 6:
-            //         break;
+                case 0:
+                {
+                    break;
+                }
 
-            //     case 7:
-            //         break;
-            //     }
-
-            // } while (option != 0);
+                default:
+                {
+                    cout << "Invalid option. Please try again.\n";
+                    break;
+                }
+                }
+            } while (option != 0);
         }
         else
         {
@@ -179,4 +229,5 @@ void Librarian::librarianMenu()
             msgPressEnterInLogIn();
         }
     }
+    return -1;
 }

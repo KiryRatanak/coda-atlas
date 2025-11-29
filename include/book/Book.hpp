@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -13,6 +14,4 @@ struct Book {
     string country;
 };
 
-struct History {
-    string title;
-};
+extern vector<Book> books; 

@@ -144,7 +144,6 @@ int validatedAdminLogIn()
 
     while (true)
     {
-        displayAdminLogIn();
         cin >> option;
 
         if (cin.fail())
@@ -210,6 +209,84 @@ int validatedLibrarianLogIn()
         }
 
         if (option >= 1 && option <= 7)
+            return option;
+
+        else
+            msgWrongOptionInLogIn();
+    }
+    return -1;
+}
+
+int validatedManageLibrarian()
+{
+    int option;
+
+    while (true)
+    {
+        cin >> option;
+
+        if (cin.fail())
+        {
+            cin.clear();
+            msgWithoutNumberInLogIn();
+            continue;
+        }
+
+        if (option == 0)
+        {
+            if (confirmExitInLogIn(3))
+            {
+                msgExitProgramInLogIn();
+                break;
+            }
+            else
+            {
+                cout << "Exit cancelled." << endl;
+                msgPressEnterInLogIn();
+                break;
+            }
+        }
+
+        if (option >= 1 && option <= 7)
+            return option;
+
+        else
+            msgWrongOptionInLogIn();
+    }
+    return -1;
+}
+
+int validatedLibrarianMenu()
+{
+    int option;
+
+    while (true)
+    {
+        cin>> option;
+
+        if (cin.fail())
+        {
+            cin.clear();
+            msgWithoutNumberInLogIn();
+            continue;
+        }
+
+        if (option == 0)
+        {
+            if (confirmExitInLogIn(3))
+            {
+                msgExitProgramInLogIn();
+                break;
+            }
+            else
+            {
+                cout << "Exit cancelled." << endl;
+                msgPressEnterInLogIn();
+                break;
+            }
+        }
+
+        if (option >= 1 && option <= 6)
             return option;
 
         else

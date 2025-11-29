@@ -280,13 +280,13 @@ void displayUserLogIn()
 void displayLibrarianMenu()
 {
     cout << "\n===== Library Menu =====\n";
-    cout << "  1. Import Book\n";
-    cout << "  2. List Books\n";
-    cout << "  3. Insert Book\n";
-    cout << "  4. Search Book\n";
-    cout << "  5. Update Book\n";
-    cout << "  6. Delete Book\n";
-    cout << "  7. Amount\n";
+    cout << "  1. List Books\n";
+    cout << "  2. Import Book\n";
+    cout << "  3. Search Book\n";
+    cout << "  4. Update Book\n";
+    cout << "  5. Delete Book\n";
+    cout << "  6. Amount\n";
+    cout << "  7. Return Back\n";
     cout << "  0. Exit\n";
 }
 
@@ -304,10 +304,12 @@ void displayUserMenu()
 
 void displayAdminMenu()
 {
+    system("cls");
     cout << "\n===== ADMIN MENU =====\n";
     cout << "1. Check Library\n";
     cout << "2. Manage Librarian\n";
     cout << "3. Amount\n";
+    cout << "4. ReturnBack\n";
     cout << "0. Exit\n";
     cout << "Enter your option: ";
 }

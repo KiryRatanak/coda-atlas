@@ -5,30 +5,19 @@
 #include <iostream>
 #include <algorithm>
 
-// struct Book
-// {
-//     int id;
-//     std::string title;
-//     std::string author;
-//     int year;
-// };
-
+using namespace std;
 class Librarian
 {
-private:
-    // std::vector<Book> books;
-    // int nextId = 1;
 
 public:
     Librarian();
 
-    // void importBook(const std::string &title, const std::string &author, int year);
-    // void listBooks();
-    // // void insertBook(const std::string& title, const std::string& author, int year);
-    // void searchBooks(const std::string &title, const std::string &author, int year);
-    // void updateBook(int id);
-    // void deleteBook(int id);
-    // int amount();
+    void importBook(string title, string author, int year, string country);
+    void listBooks();
+    void searchBooks(string title, string author, int year, string country);
+    void updateBook(string title);
+    void deleteBook(string title);
+    int amount();
 
-    void librarianMenu();
+    int librarianMenu();
 };

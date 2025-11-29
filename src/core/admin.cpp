@@ -4,19 +4,20 @@
 #include "utils/Logger.hpp"
 #include "validation/Validation.hpp"
 #include "security/HidePwd.hpp"
+#include "core/Librarian.hpp"
 
 using namespace std;
-Admin::Admin() {
+
+Librarian lib;
+
+Admin::Admin()
+{
     // Constructor implementation (if needed)
 }
 
-void Admin::checkLibrary() {
-    cout << "checkLibrary successfully" << endl;
-}
 
-
-
-void Admin::createLibrarian() {
+void Admin::createLibrarian()
+{
     LibrarianManagement lib;
 
     cout << "Enter username: ";
@@ -39,13 +40,16 @@ void Admin::createLibrarian() {
     cout << "\nLibrarian created successfully!\n";
 }
 
-void Admin::updateLibrarian() {
+void Admin::updateLibrarian()
+{
     string username;
     cout << "Enter username to update: ";
     cin >> username;
 
-    for (auto &lib : librarians) {
-        if (lib.username == username) {
+    for (auto &lib : librarians)
+    {
+        if (lib.username == username)
+        {
             cout << "New gender: ";
             cin >> lib.gender;
 
@@ -65,13 +69,16 @@ void Admin::updateLibrarian() {
     cout << "Librarian not found!\n";
 }
 
-void Admin::deleteLibrarian() {
+void Admin::deleteLibrarian()
+{
     string username;
     cout << "Enter username to delete: ";
     cin >> username;
 
-    for (size_t i = 0; i < librarians.size(); i++) {
-        if (librarians[i].username == username) {
+    for (size_t i = 0; i < librarians.size(); i++)
+    {
+        if (librarians[i].username == username)
+        {
             librarians.erase(librarians.begin() + i);
             cout << "Deleted successfully!\n";
             return;
@@ -80,14 +87,17 @@ void Admin::deleteLibrarian() {
     cout << "Librarian not found!\n";
 }
 
-void Admin::showLibrarians() {
-    if (librarians.empty()) {
+void Admin::showLibrarians()
+{
+    if (librarians.empty())
+    {
         cout << "No librarians found.\n";
         return;
     }
 
     cout << "\n===== Librarians =====\n";
-    for (const auto &lib : librarians) {
+    for (const auto &lib : librarians)
+    {
         cout << "Username: " << lib.username << "\n";
         cout << "Gender: " << lib.gender << "\n";
         cout << "Phone: " << lib.phone << "\n";
@@ -96,40 +106,65 @@ void Admin::showLibrarians() {
     }
 }
 
-void Admin::manageLibrarian() {
-    system("cls");
+int Admin::manageLibrarian()
+{
     int option;
 
-    do {
+    do
+    {
         cout << "\n===== Manage Librarians =====\n";
         cout << "1. Create Librarian\n";
         cout << "2. Update Librarian\n";
         cout << "3. Delete Librarian\n";
         cout << "4. Show Librarians\n";
+        cout << "5. Return back\n";
         cout << "0. Return\n";
         cout << "Select option: ";
-        cin >> option;
 
-        switch (option) {
-            case 1: createLibrarian(); break;
-            case 2: updateLibrarian(); break;
-            case 3: deleteLibrarian(); break;
-            case 4: showLibrarians(); break;
-            case 0: break;
-            default: cout << "Invalid option!\n";
+        option = validatedManageLibrarian();
+
+        if (option == 5)
+        {
+            msgReturnBackInLogIn();
+            return -1;
+        }
+
+        switch (option)
+        {
+        case 1:
+            createLibrarian();
+            break;
+        case 2:
+            updateLibrarian();
+            break;
+        case 3:
+            deleteLibrarian();
+            break;
+        case 4:
+            showLibrarians();
+            break;
+        case 0:
+
+            break;
+        default:
+            cout << "Invalid option!\n";
         }
 
     } while (option != 0);
+
+    return -1;
 }
 
-
-
-void Admin::amount() {
-    cout << "amount successfully" << endl;
-}
-
-void Admin::adminMenu()
+int Admin::amount()
 {
+    cout << "amount successfully" << endl;
+    msgPressEnterInLogIn();
+    return -1;
+}
+
+int Admin::adminMenu()
+{
+    system("cls");
     int option;
     string username, password;
     int attempts = 3;
@@ -152,26 +187,32 @@ void Admin::adminMenu()
             {
                 displayAdminMenu();
 
-                cin >> option;
-
                 option = validatedAdminLogIn();
+
+                if (option == 4)
+                {
+                    msgReturnBackInLogIn();
+                    return -1;
+                }
 
                 switch (option)
                 {
-            //     case 1:
-            //         checkLibrary();
-            //         break;
+                case 1:
+                    lib.listBooks();
+                    msgPressEnterInLogIn();
+                    break;
 
                 case 2:
                     manageLibrarian();
                     break;
 
-            //     case 3:
-            //         amount();
-            //         break;
+                case 3:
+                    amount();
+                    break;
+
                 default:
                     break;
-                } // end switch
+                }
 
             } while (option != 0);
         }
@@ -193,4 +234,5 @@ void Admin::adminMenu()
             msgPressEnterInLogIn();
         }
     }
+    return -1;
 }

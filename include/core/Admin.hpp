@@ -15,10 +15,9 @@ struct LibrarianManagement {
 class Admin {
 public:
     Admin();  // Constructor
-    void adminMenu();   // Function to display admin menu
-    void checkLibrary();  // Function to check library
-    void manageLibrarian();  // Function to manage librarian
-    void amount();
+    int adminMenu();   // Function to display admin menu
+    int manageLibrarian();  // Function to manage librarian
+    int amount();
 
 private:
     // Storage for librarians

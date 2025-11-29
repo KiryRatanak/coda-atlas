@@ -12,3 +12,4 @@ int validatedHeader();
 int validatedLogIn();
 int validatedAdminLogIn();
 int validatedLibrarianLogIn();
+int validatedManageLibrarian();
