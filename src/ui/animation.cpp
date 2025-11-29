@@ -40,10 +40,3 @@ void fillAndEmpty()
     cout << "]" <<endl;
 
 }
-
-int main()
-{
-    enableVTMode();
-    fillAndEmpty();
-    return 0;
-}
