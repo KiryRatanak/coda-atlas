@@ -17,7 +17,7 @@ void User::listAllBooks() {
     cout << "\n=====[ ALL BOOKS ]=====\n";
     for (auto &b : *books) {
         cout << b.title << " | " << b.author << " | " << b.year 
-             << " | " << b.country 
+             << " | " << b.country
              << (b.borrowed ? " | Borrowed\n" : " | Available\n");
     }
 }
@@ -148,34 +148,6 @@ void User::viewBorrowHistory()
     for (size_t i = 0; i < borrowHistory.size(); i++) {
         cout << i + 1 << ". " << borrowHistory[i] << endl;
     }
-}
-
-
-void User::borrowBook()
-{
-    string title;
-    cout << "Enter book title to borrow: ";
-    cin.ignore();
-    getline(cin, title);
-
-    for (auto &b : *books)
-    {
-        if (b.title == title)
-        {
-            if (!b.borrowed)
-            {
-                b.borrowed = true;
-                borrowHistory.push_back(title);  // add to history
-                cout << "Book borrowed successfully!\n";
-            }
-            else
-            {
-                cout << "Book is already borrowed!\n";
-            }
-            return;
-        }
-    }
-    cout << "Book not found!\n";
 }
 
 void User::userMenu()

@@ -13,5 +13,5 @@ vector<Book> libraryBooks = {
     {"Harry Potter II", "Joanne Rowling", 1998, "The United Kingdom" },
     {"Harry Potter III", "Joanne Rowling", 1999, "The United Kingdom" },
     {"Harry Potter IV", "Joanne Rowling", 2000, "The United Kingdom" },
-    {"Harry Potter V", "Joanne Rowling", 2003, "The United Kingdom" },
+    {"Harry Potter V", "Joanne Rowling", 2003, "The United Kingdom" }
 };

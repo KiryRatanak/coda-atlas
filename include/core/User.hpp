@@ -1,15 +1,18 @@
 #pragma once
-#include <iostream>
-#include <string>
 #include <vector>
-#include "book/Book.hpp"
+#include <string>
+#include "book/Book.hpp"       // best if you set include paths correctly
+
 using namespace std;
 
 class User {
+
 private:
     vector<Book>* books;
+    vector<string> borrowHistory;
 
 public:
+    User();  // <-- NEW default constructor
     User(vector<Book>* libraryBooks);
 
     void listAllBooks();
@@ -18,8 +21,8 @@ public:
     void findByTitle();
     void findByYear();
     void borrowBook();
-    void User::addToBorrowHistory(const string& title);
+    void addToBorrowHistory(const string& title); // <-- FIXED
     void userMenu();
-    void viewBorrowHistory();     // new
-    void deleteBook();  
+    void viewBorrowHistory();
+    void deleteBook();
 };
