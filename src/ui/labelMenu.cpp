@@ -11,7 +11,7 @@ void welcome(){
 
 void displayHeaderMenu()
 {
-    
+    system("cls");
 
     cout << b_blue << R"(
                                                             ████████╗ ███████╗ ████████╗  █████╗  ██████╗ 
@@ -95,7 +95,7 @@ void displayLogInMenu()
                                                     ║ ║  )"
          << b_cyan << R"(4)"
          << b_blue << R"(  ║ )"
-         << b_cyan << R"( 🔙 Back To Header )"
+         << b_cyan << R"( 🔙 Return Back    )"
          << b_blue << R"(                             ║ ║
                                                     ║ ║  )"
          << b_red << R"(0)"

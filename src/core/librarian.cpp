@@ -1,3 +1,5 @@
+#include "iomanip"
+
 #include "core/librarian.hpp"
 #include "ui/LabelMenu.hpp"
 #include "security/HidePwd.hpp"
@@ -9,42 +11,82 @@
 
 using namespace std;
 
+Librarian lib;
+
 Librarian::Librarian() {};
 
-void Librarian::importBook(string title, string author, int year, string country)
+int Librarian::getNextId()
 {
-    Book newBook = {title, author, year, country};
-    books.push_back(newBook);
-    cout << "Book imported successfully!\n";
+    return books.size() + 1; // returns the next available ID
+}
+
+void Librarian::importBook(const string &title, const string &author, int year, const string &country)
+{
+    int id = getNextId();
+    books.push_back({id, title, author, year, country});
+    cout << b_green << "Book imported successfully!\n"
+         << reset;
+    msgPressEnterInLogIn();
 }
 
 void Librarian::listBooks()
 {
     system("cls");
-    cout << "\n===== Book List =====\n";
+
+    cout << b_blue << " ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" << endl;
+    cout << b_blue << R"( ║                                    )" << b_green << R"(   __   _     __     ___            __       )" << b_blue << R"(                                     ║)" << endl;
+    cout << b_blue << R"( ║                                    )" << b_green << R"(  / /  (_)__ / /_   / _ )___  ___  / /__ ___ )" << b_blue << R"(                                     ║)" << endl;
+    cout << b_blue << R"( ║                                    )" << b_green << R"( / /__/ (_-</ __/  / _  / _ \/ _ \/  '_/(_-< )" << b_blue << R"(                                     ║)" << endl;
+    cout << b_blue << R"( ║                                    )" << b_green << R"(/____/_/___/\__/  /____/\___/\___/_/\_\/___/ )" << b_blue << R"(                                     ║)" << endl;
+
+    cout << b_blue << R"( ║                                                                                                                      ║)" << endl;
+    cout << b_blue << " ╠═════════╦════════════════════════════════╦════════════════════════════════╦═════════╦════════════════════════════════╣" << endl;
+
+    cout << b_blue << left << " ║ " << reset << setw(7) << "Id"
+         << b_blue << " ║ " << reset << setw(30) << "Title"
+         << b_blue << " ║ " << reset << setw(30) << "Author"
+         << b_blue << " ║ " << reset << setw(7) << "Year"
+         << b_blue << " ║ " << reset << setw(30) << "Country"
+         << b_blue << " ║ " << reset << endl;
+    cout << b_blue << " ╠═════════╬════════════════════════════════╬════════════════════════════════╬═════════╬════════════════════════════════╣" << endl;
+
     if (books.empty())
     {
-        cout << "No books available.\n";
+    cout << b_blue << " ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" << endl; 
+    cout << b_blue << R"( ║                                    )" << b_green << R"(   __   _     __     ___            __       )" << b_blue << R"(                                     ║)" << endl;
+    cout << b_blue << R"( ║                                    )" << b_green << R"(  / /  (_)__ / /_   / _ )___  ___  / /__ ___ )" << b_blue << R"(                                     ║)" << endl;
+    cout << b_blue << R"( ║                                    )" << b_green << R"( / /__/ (_-</ __/  / _  / _ \/ _ \/  '_/(_-< )" << b_blue << R"(                                     ║)" << endl;
+    cout << b_blue << R"( ║                                    )" << b_green << R"(/____/_/___/\__/  /____/\___/\___/_/\_\/___/ )" << b_blue << R"(                                     ║)" << endl;
+    cout << b_blue << R"( ║                                                                                                                      ║)" << endl;
+    cout << b_blue << R"( ╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣)" << endl;
+        cout << b_red << "No books available.\n"
+             << reset;
+        msgPressEnterInLogIn();
         return;
     }
 
     for (auto &b : books)
     {
-        cout << b.title
-             << " | " << b.author
-             << " | " << b.year
-             << " | " << b.country << endl;
+        cout << left << b_blue << " ║ " << reset << setw(7) << b.id
+             << b_blue << " ║ " << reset << setw(30) << b.title
+             << b_blue << " ║ " << reset << setw(30) << b.author
+             << b_blue << " ║ " << reset << setw(7) << b.year
+             << b_blue << " ║ " << reset << setw(30) << b.country
+             << b_blue << " ║ " << reset << endl;
     }
+
+    cout << b_blue << " ╚═════════╩════════════════════════════════╩════════════════════════════════╩═════════╩════════════════════════════════╝" << reset << endl;
+    
 }
 
-void Librarian::searchBooks(string title, string author, int year, string country)
+void Librarian::searchBooks(int id)
 {
     cout << "\n===== Search Result =====\n";
     bool found = false;
 
     for (auto &b : books)
     {
-        if (b.title == title || b.author == author || b.year == year)
+        if (b.id == id)
         {
             cout << b.title
                  << " | " << b.author
@@ -60,11 +102,11 @@ void Librarian::searchBooks(string title, string author, int year, string countr
     }
 }
 
-void Librarian::updateBook(string title)
+void Librarian::updateBook(int id)
 {
     for (auto &b : books)
     {
-        if (b.title == title)
+        if (b.id == id)
         {
             cout << "Enter new title: ";
             cin >> b.title;
@@ -78,13 +120,13 @@ void Librarian::updateBook(string title)
             return;
         }
     }
-    cout << "Book with title " << title << " not found.\n";
+    cout << "Book with title " << id << " not found.\n";
 }
 
-void Librarian::deleteBook(string title)
+void Librarian::deleteBook(int id)
 {
     auto it = remove_if(books.begin(), books.end(), [&](const Book &b)
-                        { return b.title == title; });
+                        { return b.id == id; });
 
     if (it != books.end())
     {
@@ -93,7 +135,7 @@ void Librarian::deleteBook(string title)
     }
     else
     {
-        cout << "Book with title " << title << " not found.\n";
+        cout << "Book with title " << id << " not found.\n";
     }
 }
 
@@ -104,6 +146,7 @@ int Librarian::amount()
 
 int Librarian::librarianMenu()
 {
+    system("cls");
     int option;
     string username, password;
     int attempts = 3;
@@ -163,38 +206,31 @@ int Librarian::librarianMenu()
                 case 3:
                 {
                     system("cls");
-                    string title, author, country;
-                    int year;
-                    cout << "Enter book title: ";
-                    cin >> title;
-                    cout << "Enter book author: ";
-                    cin >> author;
-                    cout << "Enter publication year: ";
-                    cin >> year;
-                    cout << "Enter country: ";
-                    cin >> country;
-                    lib.searchBooks(title, author, year, country);
+                    int id;
+                    cout << "Enter book id: ";
+                    cin >> id;
+                    lib.searchBooks(id);
                     break;
                 }
                 case 4:
                 {
                     system("cls");
-                    string title;
+                    int id;
                     listBooks();
-                    cout << "Enter book title to update: ";
-                    cin >> title;
-                    lib.updateBook(title);
+                    cout << "Enter book id to update: ";
+                    cin >> id;
+                    lib.updateBook(id);
                     break;
                 }
 
                 case 5:
                 {
                     system("cls");
-                    string title;
+                    int id;
                     listBooks();
-                    cout << "Enter book title to delete: ";
-                    cin >> title;
-                    lib.deleteBook(title);
+                    cout << "Enter book id to delete: ";
+                    cin >> id;
+                    lib.deleteBook(id);
                     break;
                 }
 

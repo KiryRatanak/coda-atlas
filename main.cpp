@@ -2,6 +2,7 @@
 
 #include "core/LogIn.hpp"
 #include "ui/labelMenu.hpp"
+#include "core/Librarian.hpp"
 
 int option;
 

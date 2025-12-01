@@ -8,13 +8,7 @@
 
 using namespace std;
 
-Librarian lib;
-
-Admin::Admin()
-{
-    // Constructor implementation (if needed)
-}
-
+Admin::Admin() {}
 
 void Admin::createLibrarian()
 {

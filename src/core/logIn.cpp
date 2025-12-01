@@ -8,6 +8,7 @@
 
 void header()
 {
+    system ("cls");
     int option;
 
     do
@@ -46,8 +47,6 @@ void logInMenu()
 
     User user;
 
-    Librarian librarian;
-
     Admin admin;
 
     do
@@ -67,7 +66,7 @@ void logInMenu()
             break;
 
         case 2:
-            librarian.librarianMenu();
+            lib.librarianMenu();
             break;
 
         case 3:
