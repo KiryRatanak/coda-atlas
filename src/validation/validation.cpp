@@ -33,7 +33,8 @@ bool confirmExitInLogIn(int maxAttempts = 3)
 
     while (attempts < maxAttempts)
     {
-        cout << endl << "Are you sure you want to exit? (y/n): ";
+        cout << endl
+             << "Are you sure you want to exit? (y/n): ";
         cin >> input;
 
         if (input == "y" || input == "Y")
@@ -219,6 +220,47 @@ int validatedLibrarianLogIn()
     return -1;
 }
 
+int validatedUserLogIn()
+{
+    int option;
+
+    while (true)
+    {
+        cout << "\033[2A";
+        cout << "\033[22C";
+        cin >> option;
+
+        if (cin.fail())
+        {
+            cin.clear();
+            msgWithoutNumberInLogIn();
+            continue;
+        }
+
+        if (option == 0)
+        {
+            if (confirmExitInLogIn(3))
+            {
+                msgExitProgramInLogIn();
+                break;
+            }
+            else
+            {
+                cout << "Exit cancelled." << endl;
+                msgPressEnterInLogIn();
+                break;
+            }
+        }
+
+        if (option >= 0 && option <= 6)
+            return option;
+
+        else
+            msgWrongOptionInLogIn();
+    }
+    return -1;
+}
+
 int validatedManageLibrarian()
 {
     int option;
@@ -266,7 +308,7 @@ int validatedLibrarianMenu()
 
     while (true)
     {
-        cin>> option;
+        cin >> option;
 
         if (cin.fail())
         {

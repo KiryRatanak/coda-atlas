@@ -369,6 +369,7 @@ void displayManageLibrarian(){
 
 void displayUserMenu()
 {
+    system("cls");
     cout << b_blue << R"( ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗)" << endl;
     cout << b_blue << R"( ║                                )" << b_green << R"(   __  __                   __  ___                )" << b_blue << R"(                                   ║)" << endl;
     cout << b_blue << R"( ║                                )" << b_green << R"(  / / / /_______  _____    /  |/  /__  ____  __  __)" << b_blue << R"(                                   ║)" << endl;

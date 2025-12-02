@@ -13,6 +13,7 @@ struct Book {
     string author;
     int year;
     string country;
+    bool isBorrowed;
 };
 
 extern vector<Book> books; 
