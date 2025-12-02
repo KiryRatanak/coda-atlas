@@ -11,11 +11,6 @@ using namespace std;
 
 User::User() {}
 
-User::User(vector<Book> *libraryBooks)
-{
-    this->books = libraryBooks;
-}
-
 void User::listBooksInlabrary()
 {
     system("cls");
@@ -48,7 +43,7 @@ void User::findByAuthor()
     getline(cin, author);
 
     bool found = false;
-    for (auto &b : *books)
+    for (auto &b : books)
     {
         if (b.author == author)
         {
@@ -67,7 +62,7 @@ void User::findByTitle()
     getline(cin, title);
 
     bool found = false;
-    for (auto &b : *books)
+    for (auto &b : books)
     {
         if (b.title == title)
         {
@@ -86,7 +81,7 @@ void User::findByYear()
     cin >> year;
 
     bool found = false;
-    for (auto &b : *books)
+    for (auto &b : books)
     {
         if (b.year == year)
         {
@@ -104,7 +99,7 @@ void User::borrowBook()
     cout << "Enter book ID to borrow: ";
     cin >> id;
 
-    for (auto &b : *books)
+    for (auto &b : books)
     {
         if (b.id == id)
         {
@@ -145,7 +140,7 @@ void User::deleteBook()
         if (borrowHistory[i].bookId == id)
         {
 
-            for (auto &b : *books)
+            for (auto &b : books)
             {
                 if (b.id == id)
                 {
@@ -190,7 +185,7 @@ int User::userMenu()
 
                 option = validatedUserLogIn();
 
-                if (option == 4)
+                if (option == 6)
                 {
                     msgReturnBackInLogIn();
                     return -1;

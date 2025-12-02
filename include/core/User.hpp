@@ -6,12 +6,8 @@
 #include "core/History.hpp"
 
 class User {
-private:
-    std::vector<Book>* books;            // points to main library list
-    std::vector<History> borrowHistory;  // list of borrowed books
 
 public:
-    User(std::vector<Book>* libraryBooks);
     User();  // if you need default constructor
 
     int userMenu();
