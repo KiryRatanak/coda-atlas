@@ -4,6 +4,8 @@
 #include "ui/labelMenu.hpp"
 #include "core/Librarian.hpp"
 
+#include "ui/Animation.hpp"
+
 int option;
 
 int main() {
@@ -11,6 +13,7 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
+    animationLoading();
     header();
 
     return 0;

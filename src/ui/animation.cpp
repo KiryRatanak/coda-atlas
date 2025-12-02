@@ -3,6 +3,8 @@
 #include <thread>
 #include <windows.h>
 
+#include "ui/LabelMenu.hpp"
+
 using namespace std;
 
 // Some MinGW versions do NOT define this
@@ -19,24 +21,21 @@ void enableVTMode()
     SetConsoleMode(hOut, dwMode);
 }
 
-void fillAndEmpty()
+void animationLoading()
 {
-    string red = "\033[31m";
-    string green = "\033[32m";
-    string reset = "\033[0m";
-    cout << "[\r\033[62C" ;
+    welcome();
+    cout << "\r\033[62C" ;
     for (int i = 0; i <= 30; i++)
     {
-        cout << "\r\033[63C" << red << string(i, '-') << "/" << reset;
-        this_thread::sleep_for(chrono::milliseconds(80));
+        cout << "\r\033[63C" << b_red << string(i, '-') << "/" << reset;
+        this_thread::sleep_for(chrono::milliseconds(50));
     }
-    cout << "]";
     for (int i = 0; i <= 30; i++)
     {
-        cout << "\r\033[63C" << green << string(i, '#') << green << "/" << reset;
-        this_thread::sleep_for(chrono::milliseconds(80));
+        cout << "\r\033[63C" << b_green << string(i, '#') << b_green << "/" << reset;
+        this_thread::sleep_for(chrono::milliseconds(50));
     }
 
-    cout << "]" <<endl;
+    cout << endl;
 
 }
