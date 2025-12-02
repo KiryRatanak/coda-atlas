@@ -11,22 +11,17 @@ using namespace std;
 
 User::User() {}
 
-// User::User(vector<Book> *libraryBooks)
-// {
-//     this->books = libraryBooks;
-// }
-
 void User::listBooksInlabrary()
 {
     system("cls");
-
     lib.listBooks();
 }
 
 void User::findBook()
 {
     int option;
-    cout << endl << "\n Find book by:\n";
+    cout << endl
+         << "\n Find book by:\n";
     cout << " 1. Author\n 2. Title\n 3. Year\nChoose: ";
     cin >> option;
     cin.ignore();
@@ -44,7 +39,8 @@ void User::findBook()
 void User::findByAuthor()
 {
     string author;
-    cout << endl << " Enter author: ";
+    cout << endl
+         << " Enter author: ";
     getline(cin, author);
 
     bool found = false;
@@ -63,7 +59,8 @@ void User::findByAuthor()
 void User::findByTitle()
 {
     string title;
-    cout << endl << " Enter title: ";
+    cout << endl
+         << " Enter title: ";
     getline(cin, title);
 
     bool found = false;
@@ -82,7 +79,8 @@ void User::findByTitle()
 void User::findByYear()
 {
     int year;
-    cout << endl << " Enter year: ";
+    cout << endl
+         << " Enter year: ";
     cin >> year;
 
     bool found = false;
@@ -112,14 +110,12 @@ void User::borrowBook()
             {
                 b.isBorrowed = true;
 
-                borrowHistory.push_back({
-                    b.id,
-                    b.title,
-                    b.author,
-                    b.year,
-                    b.country,
-                    b.isBorrowed
-                });
+                borrowHistory.push_back({b.id,
+                                         b.title,
+                                         b.author,
+                                         b.year,
+                                         b.country,
+                                         b.isBorrowed});
                 cout << "Book borrowed successfully!\n";
             }
             else
@@ -136,7 +132,8 @@ void User::viewBorrowHistory()
 {
     cout << "\n=== BORROW HISTORY ===\n";
 
-    if (borrowHistory.empty()) {
+    if (borrowHistory.empty())
+    {
         cout << "No borrow history.\n";
         return;
     }
