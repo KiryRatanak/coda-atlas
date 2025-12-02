@@ -37,5 +37,6 @@ void animationLoading()
     }
 
     cout << endl;
+    cout << endl;
 
 }
