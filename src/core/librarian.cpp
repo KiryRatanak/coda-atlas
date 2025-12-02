@@ -104,7 +104,7 @@ void Librarian::updateBook(int id)
             return;
         }
     }
-    cout << "Book with title " << id << " not found.\n";
+    cout << " Book with title " << id << " not found.\n";
     msgPressEnterInLogIn();
 }
 
@@ -116,7 +116,7 @@ void Librarian::deleteBook(int id)
     if (it != books.end())
     {
         books.erase(it, books.end());
-        cout << "Book deleted successfully!\n";
+        cout << " Book deleted successfully!\n";
         msgPressEnterInLogIn();
     }
     else
@@ -194,7 +194,7 @@ int Librarian::librarianMenu()
                 case 3:
                 {
                     string title;
-                    cout << "Enter book title: ";
+                    cout << endl << " Enter book title: ";
                     cin.ignore();
                     getline(cin, title);
                     lib.searchBooks(title);
@@ -230,7 +230,7 @@ int Librarian::librarianMenu()
 
                 default:
                 {
-                    cout << "Invalid option. Please try again.\n";
+                    cout << " Invalid option. Please try again.\n";
                     break;
                 }
                 }

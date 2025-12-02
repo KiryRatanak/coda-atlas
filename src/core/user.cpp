@@ -22,7 +22,7 @@ void User::findBook()
     int option;
     cout << endl
          << "\n Find book by:\n";
-    cout << " 1. Author\n 2. Title\n 3. Year\nChoose: ";
+    cout << " 1. Author\n 2. Title\n 3. Year\n Choose: ";
     cin >> option;
     cin.ignore();
 

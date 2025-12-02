@@ -30,14 +30,14 @@ void Admin::updateLibrarian()
 {
     
     string username;
-    cout << " Enter username to update: ";
+    cout << endl << " Enter username to update: ";
     cin >> username;
 
     for (auto &lib : librarians)
     {
         if (lib.username == username)
         {
-            cout << " New gender: ";
+            cout << " New username: ";
             cin >> lib.username;
 
             cout << " New password: ";
@@ -55,7 +55,7 @@ void Admin::updateLibrarian()
 void Admin::deleteLibrarian()
 {
     string username;
-    cout << " Enter username to delete: ";
+    cout << endl << " Enter username to delete: ";
     cin >> username;
 
     for (size_t i = 0; i < librarians.size(); i++)
