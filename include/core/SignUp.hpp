@@ -5,23 +5,24 @@
 #include <xlnt/xlnt.hpp>
 #include <filesystem>
 
-class Account {
+using namespace std;
+
+class Account
+{
 private:
-    std::string username;
-    std::string password;
+    string username;
+    string password;
 
 public:
     Account() = default;
-    Account(const std::string &username, const std::string &password);
+    Account(const string &username, const string &password);
 
-    std::string getUsername() const;
-    std::string getPassword() const;
+    string getUsername() const;
+    string getPassword() const;
 
-    void setUsername(const std::string &username);
-    void setPassword(const std::string &password);
+    void setUsername(const string &username);
+    void setPassword(const string &password);
+
+    void signUp();
+    
 };
-
-void writeAccountsExcel(const std::string &filename, std::vector<Account> &accounts);
-std::vector<Account> readAccountsExcelToVector(const std::string &filename);
-void readAccountsExcel(const std::string &filename);
-void signUp();

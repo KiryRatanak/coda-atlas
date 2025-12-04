@@ -5,11 +5,14 @@
 #include "core/Admin.hpp"
 #include "core/Librarian.hpp"
 #include "core/User.hpp"
+#include "core/SignUp.hpp"
 
 void header()
 {
     system ("cls");
     int option;
+
+    Account acc;
 
     do
     {
@@ -26,6 +29,7 @@ void header()
         case 2:
         {
             displayRequestAccount();
+            acc.signUp();
             msgPressEnter();
             break;
         }
